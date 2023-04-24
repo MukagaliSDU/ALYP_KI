@@ -1,0 +1,95 @@
+create table category (
+    id int primary key,
+    parented_id number,
+    name varchar(255),
+    foreign key(parented_id) references category(id)
+);
+
+
+create table product (
+    id int primary key,
+    category_id number,
+    name varchar(255),
+    price int,
+    description varchar(255),
+    foreign key(category_id) references category(id)
+);
+
+create table delivery(
+    id int primary key,
+    address_id int,
+    arrival_date date,
+    foreign key(address_id) references address(id),
+    foreign key(id) references paid_cart(delivery_id)
+);
+
+create table paid_cart(
+    id int unique,
+    created_date date,
+    payment_method varchar(255),
+    delivery_id int unique,
+    foreign key(id) references shopping_cart(id)
+) 
+
+create table added(
+    product_quantity_id int,
+    shopping_cart_id int,
+    quantity int,
+    foreign key(product_quantity_id) references product_quantity(id),
+    foreign key(shopping_cart_id) references shopping_cart(id)
+);
+
+create table payment(
+    id int primary key,
+    payment_status varchar(255)
+);
+
+create table address(
+    id int primary key,
+    username varchar(255),
+    city varchar(255),
+    zipcode int,
+    address varchar(255),
+    foreign key(username) references account(username)
+);
+
+create table account(
+    username varchar(255) primary key,
+    email varchar(255) unique,
+    name varchar(255),
+    surname varchar(255),
+    password varchar(255),
+    phone_number int
+);
+
+create table product_sale(
+    id int primary key,
+    product_id int,
+    sale_id int,
+    foreign key(product_id) references product(id),
+    foreign key(sale_id) references sale(id)
+);
+
+create table delivery(
+    id int primary key,
+    address_id int,
+    arrival_date int,
+    foreign key(address_id) references address(id),
+    foreign key(id) references paid_cart(delivery_id)
+);
+
+create table product_quantity(
+    id int primary key,
+    quantity int,
+    property_variation_id int,
+    product_id int,
+    foreign key(product_id) references product(id),
+    foreign key(property_variation_id) references property_variation(id)
+);
+
+create table need_to_buy(
+    id int primary key,
+    product__quantity_id int,
+    buy_quantity int,
+    foreign key(product__quantity_id) references product_quantity(id)
+);
