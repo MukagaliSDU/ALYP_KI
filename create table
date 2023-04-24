@@ -92,4 +92,7 @@ create table need_to_buy(
     product__quantity_id int,
     buy_quantity int,
     foreign key(product__quantity_id) references product_quantity(id)
-);
+);   
+
+
+end;
