@@ -1,0 +1,137 @@
+DECLARE
+  next_id NUMBER := 1;
+BEGIN
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Small', 'Red');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Small', 'Blue');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Small', 'Green');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Small', 'Yellow');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Small', 'Purple');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Small', 'Orange');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Medium', 'Red');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Medium', 'Blue');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Medium', 'Green');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Medium', 'Yellow');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Medium', 'Purple');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Medium', 'Orange');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Large', 'Red');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Large', 'Blue');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Large', 'Green');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Large', 'Yellow');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Large', 'Purple');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Large', 'Orange');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Extra Large', 'Red');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Extra Large', 'Blue');
+  next_id := next_id + 1;
+  
+  INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Extra Large', 'Green');
+  next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Extra Large', 'Yellow');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Extra Large', 'Purple');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Extra Large', 'Orange');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Double Extra Large', 'Red');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Double Extra Large', 'Blue');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Double Extra Large', 'Green');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Double Extra Large', 'Yellow');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Double Extra Large', 'Purple');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Double Extra Large', 'Orange');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Triple Extra Large', 'Red');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Triple Extra Large', 'Blue');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Triple Extra Large', 'Green');
+next_id := next_id + 1;
+
+Mukagali, [23.04.2023 21:42]
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Triple Extra Large', 'Yellow');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Triple Extra Large', 'Purple');
+next_id := next_id + 1;
+
+INSERT INTO property_variation (id, size_, color) VALUES (next_id, 'Triple Extra Large', 'Orange');
+END;
+
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (1,1,10800,'abernasek7');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (2,2,0,'bgurdon6');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (3,2,0,'lbound9');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (4,2,0,'rshrimplingo');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (5,2,0,'fbrogginif');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (6,1,0,'chowarth5');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (7,3,0,'rjobern3');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (8,1,0,'mwinley0');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (9,2,0,'tmatussevichk');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (10,3,0,'dsinnotti');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (11,3,0,'agrindall4');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (12,2,0,'jadamob');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (13,1,0,'semmotm');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (14,1,0,'msimonaitise');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (15,1,0,'ascully2');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (16,1,0,'fbrogginif');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (17,2,0,'byokelj');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (18,2,0,'byokelj');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (19,2,0,'epagramg');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (20,3,0,'dsinnotti');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (21,3,0,'jcowterdh');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (22,1,0,'ascully2');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (23,3,0,'jcowterdh');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (24,3,0,'abernasek7');
+INSERT INTO my_table (id, payment_id, total_cost, username) VALUES (25,3,0,'bgurdon6');
