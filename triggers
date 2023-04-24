@@ -118,3 +118,19 @@ DBMS_OUTPUT.PUT_LINE('Current number of rows in table is ' || curr_table);
 if length(:new.name) < 3 then RAISE_APPLICATION_ERROR(-20001, 'Length of name shoul be more or equal than 3');
 end if;
 end;
+----------------------------------------------trigger before------------------------------------------------
+create or replace trigger before_ins_product 
+before insert on product
+for each row 
+declare
+check_name exception;
+curr_table number;
+begin 
+select count(*) into curr_table from product;
+DBMS_OUTPUT.PUT_LINE('Current number of rows in table is ' || curr_table);
+if length(:new.name) < 3 then RAISE_APPLICATION_ERROR(-20001, 'Length of name shoul be more or equal than 3');
+end if;
+end;
+
+check:
+insert into product(id,category_id,name,price,description) values(21011,3,'Mens normal shirt',1040, 'Comfortable cotton shirt for men');
