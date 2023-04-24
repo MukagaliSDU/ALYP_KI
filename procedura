@@ -1,0 +1,45 @@
+
+--------------------------------------------------procedure sql%rowcount--------------------------------------------------
+create or replace procedure row_count
+is
+    l_count number;
+begin 
+    select count(*) into l_count from product where CATEGORY_ID = 3;
+    
+    if l_count > 1 then
+        dbms_output.put_line('work');
+    else 
+        dbms_output.put_line('dont work');
+    end if;
+end;
+
+------------------------------------------------ procedure group by------------------------------------------------------
+create or replace procedure menu as
+    menucur sys_refcursor;
+    x number;
+    cat varchar2(100);
+    menu_item_name varchar(100);
+    menu_item_price number;
+begin
+    select max(id) into x from category;
+    for i in 1..x loop
+        open menucur for
+            select p.name, p.price
+            from product p
+            where p.category_id = i;
+        select name into cat from category where id = i;
+        dbms_output.put_line(cat);
+        loop
+            fetch menucur into menu_item_name, menu_item_price;
+            exit when menucur%notfound;
+            dbms_output.put_line(menu_item_name || ' ' || menu_item_price);
+        end loop;
+        close menucur;
+    end loop;
+end;
+
+check:
+
+begin
+menu();
+end;
