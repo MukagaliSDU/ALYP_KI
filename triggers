@@ -1,0 +1,120 @@
+select * from product
+insert into product_sale(PRODUCT_ID, SALE_ID, PERCENT) 
+values(21002, 777, 20);
+
+
+delete from product_sale
+where product_id = 21002
+--------------------------------sale-----------------------------------------------
+
+CREATE OR REPLACE TRIGGER after_insert_sale
+AFTER INSERT ON product_sale
+FOR EACH ROW
+DECLARE
+   isSalePercentageRight EXCEPTION;
+   salePercent NUMBER;
+BEGIN
+   SELECT sale_percent INTO salePercent FROM sale WHERE id = :NEW.sale_id;
+   IF :NEW.percent > salePercent THEN
+      RAISE isSalePercentageRight;
+   ELSE
+      UPDATE product SET price = price - (price * :NEW.percent) / 100 WHERE id = :NEW.product_id;
+   END IF;
+EXCEPTION
+   WHEN isSalePercentageRight THEN DBMS_OUTPUT.PUT_LINE('You cannot give percentage more than given in the main sale table');
+END;
+
+
+-------------------------------------ADDED -----------------------------------------------------------
+select * from product where id = 21001;
+select * from product_quantity
+select * from added
+select * from shopping_cart
+insert into added
+values(213569, 10, 1);
+---------------------------------------trigger----------------------------------------------------------
+
+CREATE OR REPLACE TRIGGER after_delete_sale
+AFTER delete ON product_sale
+FOR EACH ROW
+BEGIN
+      UPDATE product SET price = (price / ((100 - :old.percent) / 100)) WHERE id = :old.product_id;
+END;
+
+CREATE OR REPLACE TRIGGER after_insert_added
+AFTER INSERT ON added
+FOR EACH ROW
+DECLARE
+    isProductQuantityRight exception;
+    totalCost number;
+    quantityNew NUMBER;
+    newPrice number;
+BEGIN
+    SELECT quantity into quantityNew FROM product_quantity WHERE id = :new.product_quantity_id;
+    IF :new.add_quantity > quantityNew THEN
+      RAISE isProductQuantityRight;
+    ELSE
+      UPDATE PRODUCT_QUANTITY SET quantity = quantity - :new.add_quantity where id = :new.product_quantity_id;
+      select price into newPrice from product where id = (select product_id from product_quantity where id = :new.product_quantity_id);
+      totalCost := :new.add_quantity * newPrice;
+      update SHOPPING_CART set total_cost = totalCost where id = :new.SHOPPING_CART_ID;
+   END IF;
+EXCEPTION
+   WHEN isProductQuantityRight THEN DBMS_OUTPUT.PUT_LINE('You cannot buy things more than in store');
+END;
+
+
+
+----------------------------------------------need_to_buy trigger------------------------------------------------------------
+select * from need_to_buy;
+select * from product_quantity
+drop trigger TRG_PRODUCT_QUANTITY
+
+
+update product_quantity set QUANTITY = 20 where id = 194295;
+
+
+
+CREATE OR REPLACE TRIGGER need_to_buy_trigger
+after update ON product_quantity
+FOR EACH ROW
+BEGIN
+    if :new.QUANTITY < 30 then
+        insert into need_to_buy(id, buy_quantity) values(:new.id, 200 - :new.quantity);
+    end if;
+END;
+
+--------------------------------------------paid cart trigger-----------------------------------------------------------------------
+create or replace trigger paid_cart_trigger
+after insert or update on shopping_cart
+for each row 
+begin
+if :new.payment_id = 2 then
+ insert into paid_cart(ID, CREATED_DATE, PAYMENT_METHOD, DELIVERY_ID) values (:new.id, sysdate, 'credit card' ,dbms_random.value(322, 2000));
+end if;
+end;
+
+---------------------------before insert on product reigger---------------------------------------------------------------------------
+create or replace trigger before_ins_product 
+before insert on product
+for each row 
+declare
+check_name exception;
+curr_table number;
+begin 
+select count(*) into curr_table from product;
+DBMS_OUTPUT.PUT_LINE('Current number of rows in table is ' || curr_table);
+if length(:new.name) < 3 then RAISE_APPLICATION_ERROR(-20001, 'Length of name shoul be more or equal than 3');
+end if;
+end;create or replace trigger before_ins_product 
+before insert on product
+for each row 
+declare
+check_name exception;
+curr_table number;
+begin 
+select count(*) into curr_table from product;
+DBMS_OUTPUT.PUT_LINE('Current number of rows in table is ' || curr_table);
+if length(:new.name) < 3 then RAISE_APPLICATION_ERROR(-20001, 'Length of name shoul be more or equal than 3');
+end if;
+end;
